@@ -1,0 +1,32 @@
+{
+  "name": "apiservicesincidencias",
+  "version": "1.0.0",
+  "description": "This an api service to UDG",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index",
+    "init": "nodemon index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EzequielPasillasGonzalez/apieIncidencias.git"
+  },
+  "author": "Joahana Guadalupe Gomez Jauregui, Ezequiel Pasillas Gonzalez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EzequielPasillasGonzalez/apieIncidencias/issues"
+  },
+  "homepage": "https://github.com/EzequielPasillasGonzalez/apieIncidencias#readme",
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.592.0",
+    "axios": "^1.7.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-fileupload": "^1.5.0",
+    "express-validator": "^7.1.0",
+    "pdfkit": "^0.15.0",
+    "uuid": "^10.0.0"
+  }
+}
