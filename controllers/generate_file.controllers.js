@@ -43,13 +43,13 @@ const generatePDF = async (req, res = response) => {
             encargado: 'Raul'
         };
 
-        // Asegúrate de que la carpeta 'temp' exista
+        // Se guarda el arhivo en la carpeta temporal
         const tempDir = path.join(__dirname, 'temp');
         if (!fs.existsSync(tempDir)) {
             fs.mkdirSync(tempDir);
         }        
 
-        const nombreTemp = uuidv4() + '.' + usuario.usuario + '.pdf'
+        const nombreTemp = uuidv4() + '.pdf'
         // Genera un nombre de archivo único
         const filePath = path.join(tempDir, nombreTemp);        
 
@@ -61,7 +61,7 @@ const generatePDF = async (req, res = response) => {
 
         res.json({
             ok: true,
-            body: `Archivo generado y subido exitosamente`
+            body: nombreTemp
         });
 
     } catch (error) {

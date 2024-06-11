@@ -1,5 +1,6 @@
 const fs = require('fs')
-const { PutObjectCommand } = require('@aws-sdk/client-s3');
+const { PutObjectCommand, GetObjectCommand, } = require('@aws-sdk/client-s3');
+const { getSignedUrl } = require("@aws-sdk/s3-request-presigner");
 
 const { client } = require("../config_s3");
 
@@ -24,7 +25,27 @@ const uploadFileS3 = async (file, name) => {
     }
 }
 
+const getFileURL = async (filename) => {
+    
+    
+    try {
+        const requestParams = {
+            Bucket: process.env.AWS_BUCKET_NAME,
+            Key: filename,        
+        }    
+
+        const command = new GetObjectCommand(requestParams);
+    
+        // Expira en 7 dias
+        return await getSignedUrl(client, command, { expiresIn: 604800   })
+    
+    } catch(error) {
+        return error.message
+    }
+}
+
 module.exports = {
-    uploadFileS3
+    uploadFileS3,
+    getFileURL
 }
 
