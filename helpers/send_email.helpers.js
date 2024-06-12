@@ -1,7 +1,7 @@
 const path = require('path')
 
 const { SendEmailCommand } = require("@aws-sdk/client-ses");
-const { SMTPClient } = require("../config_s3");
+const { SMTPClient } = require("../config_aws");
 
 
 const sendEmail = async (toAddress, subject, url) => {

@@ -38,10 +38,13 @@ const { cargarArchivosDesdePath } = require('./uploads.controllers');
 
 const generatePDF = async (req, res = response) => {
     try {
+        const { nombre, codigo, plaza } = req.body        
+
         const usuario = {
-            usuario: 'Ezequiel',
-            encargado: 'Raul'
-        };
+            nombre,
+            codigo,
+            plaza
+        }
 
         // Se guarda el arhivo en la carpeta temporal
         const tempDir = path.join(__dirname, 'temp');

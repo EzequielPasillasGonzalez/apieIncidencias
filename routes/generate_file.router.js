@@ -9,8 +9,10 @@ const { generatePDF } = require('../controllers/generate_file.controllers')
 const router = Router()
 
 router.post('/', [    
-    // validarArchivoSubir,
-    // validarCampos
+    check('nombre', 'Debe de contener un nombre para completar el proceso').notEmpty(),
+    check('codigo', 'Debe de contener un codigo para completar el proceso').notEmpty(),
+    check('plaza', 'Debe de contener un plaza para completar el proceso').notEmpty(),
+    validarCampos
 ], generatePDF)
 
 
