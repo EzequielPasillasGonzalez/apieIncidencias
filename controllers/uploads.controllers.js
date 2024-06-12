@@ -3,7 +3,7 @@ const fs = require('fs');
 
 const { uploadFileS3, getFileURL } = require("../helpers/upload_file_s3.helpers");
 const { ListObjectsCommand, GetObjectCommand } = require("@aws-sdk/client-s3");
-const { client } = require("../config_s3");
+const { client } = require("../config_aws");
 
 const cargarArchivos = async (req, res = response) => {
 

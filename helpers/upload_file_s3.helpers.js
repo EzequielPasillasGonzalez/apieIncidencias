@@ -2,7 +2,7 @@ const fs = require('fs')
 const { PutObjectCommand, GetObjectCommand, } = require('@aws-sdk/client-s3');
 const { getSignedUrl } = require("@aws-sdk/s3-request-presigner");
 
-const { client } = require("../config_s3");
+const { client } = require("../config_aws");
 
 
 const uploadFileS3 = async (file, name) => {    

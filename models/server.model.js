@@ -50,17 +50,8 @@ class Server {
     routes(){ //todo: Rutas 
         this.app.use(process.env.BASE_URL_UPLOADS, require('../routes/uploads.routes'))
         this.app.use(process.env.BASE_URL_GENERATE_PDF, require('../routes/generate_file.router'))
-        // // this.app.use(this.paths.buscar, require('../routes/search.routes'))
-        // this.app.use(process.env.BASE_URL_PRODUCTOS, require('../routes/products.routes'))
-        // this.app.use(process.env.BASE_URL_TIPOPRODUCTO, require('../routes/tipo_producto.routes'))
-        // this.app.use(process.env.BASE_URL_TIPOEMPRENDIMIENTO, require('../routes/tipo_emprendimiento.routes'))
-        // this.app.use(process.env.BASE_URL_EMPRENDIMIENTO, require('../routes/emprendimiento.routes'))
-        // this.app.use(process.env.BASE_URL_TIPOENTREGA, require('../routes/tipo_entrega.routes'))
-        // this.app.use(process.env.BASE_URL_ROL, require('../routes/role.routes'))
-        // this.app.use(process.env.BASE_URL_UPLOADS, require('../routes/uploads.routes'))
-        // this.app.use(process.env.BASE_URL_USUARIO, require('../routes/user.routes'))
-        // this.app.use(process.env.BASE_URL_ESTATUS, require('../routes/estatus.routes'))
-        // this.app.use(process.env.BASE_URL_CENTROSUNIVERSITARIOS, require('../routes/centros_universitarios.routes'))
+        this.app.use(process.env.BASE_URL_SEND_EMAIL, require('../routes/send_email.router'))
+        this.app.use(process.env.BASE_URL_DYNAMODB, require('../routes/consult_dynamodb.routes'))        
     }
 
     listen() {
