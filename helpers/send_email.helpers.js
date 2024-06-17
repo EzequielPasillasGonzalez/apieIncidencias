@@ -1,5 +1,3 @@
-const path = require('path')
-
 const { SendEmailCommand } = require("@aws-sdk/client-ses");
 const { SMTPClient } = require("../config_aws");
 
@@ -8,7 +6,7 @@ const sendEmail = async (toAddress, subject, url) => {
     const params = {
         Source: process.env.AWS_EMAIL_ADDRESS, // El correo verificado en SES
         Destination: {
-            ToAddresses: [process.env.AWS_EMAIL_ADDRESS], // Dirección de destino
+            ToAddresses: [toAddress], // Dirección de destino
         },
         Message: {
             Subject: {
@@ -24,17 +22,15 @@ const sendEmail = async (toAddress, subject, url) => {
         <div style="font-family: Arial, sans-serif, 'Open Sans'" >
             <div >            
                 <img src="https://imgbucketudg.s3.amazonaws.com/universidad-de-guadalajara-eps-vector-logo.png" 
-                     width="100px" 
-                     height="100px" 
-                       
-                     data-bit="iit" 
-                     style="float: left; margin: 10px;">         
+                    width="100px" 
+                    height="100px" 
+                    data-bit="iit" 
+                    style="float: left; margin: 10px;">         
                 <img src="https://imgbucketudg.s3.amazonaws.com/logo4.png" 
-                     width="150px" 
-                     height="100px" 
-                      
-                     data-bit="iit" 
-                     style="float: right; margin: 5px;">                     
+                    width="150px" 
+                    height="100px" 
+                    data-bit="iit" 
+                    style="float: right; margin: 5px;">                     
             </div>            
             <div style="color:#4E9430;">
                 <h1 style="text-align:center"><span class="il">Aquí</span> puedes descargar tu solicitud </h1>

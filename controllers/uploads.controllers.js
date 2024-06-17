@@ -26,7 +26,7 @@ const cargarArchivos = async (req, res = response) => {
 
         res.status(400).json({
             ok: false,
-            body: error
+            body: error.message
         })
 
     }
@@ -62,7 +62,7 @@ const getListObjects = async (req, res = response) => {
     } catch (error) {
         res.status(400).json({
             ok: false,
-            body: error
+            body: error.message
         })
     }
 }
@@ -76,9 +76,9 @@ const getObject = async (req, res = response) => {
             Key: req.params.filename
         })
 
-        const {resp} = await client.send(command)
+        const resp = await client.send(command)
 
-        console.log(resp);
+        
 
         res.json({
             ok: true,
@@ -87,7 +87,7 @@ const getObject = async (req, res = response) => {
     } catch (error) {
         res.status(400).json({
             ok: false,
-            body: error
+            body: error.message
         })
     }
 }
@@ -115,7 +115,7 @@ const downloadFile = async (req, res = response) => {
     } catch (error) {
         res.status(400).json({
             ok: false,
-            body: error
+            body: error.message
         })
     }
 }
@@ -133,7 +133,7 @@ const getUrlFile = async (req, res = response) => {
     } catch (error) {
         res.status(400).json({
             ok: false,
-            body: error
+            body: error.message
         })
     }
 }

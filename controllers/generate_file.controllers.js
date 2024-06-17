@@ -36,15 +36,31 @@ const { cargarArchivosDesdePath } = require('./uploads.controllers');
 //     }
 // }
 
+// export const handler = async (event) => {
+//     // TODO implement
+//     const response = {
+//       statusCode: 200,
+//       body: JSON.stringify('Hello from Lambda!'),
+//     };
+//     return response;
+//   };
+
+// 
+
+
+
 const generatePDF = async (req, res = response) => {
     try {
-        const { nombre, codigo, plaza } = req.body        
+        const { nombre, codigo, plaza, fechaPermiso, idMotivo, FraClausula } = req.body        
 
         const usuario = {
             nombre,
             codigo,
-            plaza
-        }
+            plaza,
+            fechaPermiso, 
+            idMotivo,
+            FraClausula
+        }        
 
         // Se guarda el arhivo en la carpeta temporal
         const tempDir = path.join(__dirname, 'temp');
