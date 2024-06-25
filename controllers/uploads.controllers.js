@@ -1,7 +1,7 @@
 const { response } = require("express");
 const fs = require('fs');
 
-const { uploadFileS3, getFileURL } = require("../helpers/upload_file_s3.helpers");
+const { uploadFileS3, getFileURL, uploadXLSS3 } = require("../helpers/upload_file_s3.helpers");
 const { ListObjectsCommand, GetObjectCommand } = require("@aws-sdk/client-s3");
 const { client } = require("../config_aws");
 
@@ -41,6 +41,17 @@ const cargarArchivosDesdePath = async (filePath, nombreArchivo) => {
     } catch (error) {
         fs.unlinkSync(filePath); // Asegúrate de eliminar el archivo temporal en caso de error también
         throw error;
+    }
+};
+
+const cargarXLSXDesdePath = async (filePath, nombreArchivo) => {
+    try {        
+        const archivoCargadoS3 = await uploadXLSS3(filePath, nombreArchivo);
+        fs.unlinkSync(filePath); // Elimina el archivo temporal después de subirlo
+        return archivoCargadoS3;
+    } catch (error) {
+        fs.unlinkSync(filePath); // Asegúrate de eliminar el archivo temporal en caso de error también
+        return error.message;
     }
 };
 
@@ -145,5 +156,6 @@ module.exports = {
     getListObjects,
     getObject,
     downloadFile,
-    getUrlFile
+    getUrlFile,
+    cargarXLSXDesdePath
 }
